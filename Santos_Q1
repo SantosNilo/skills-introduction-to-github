@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class StudentEnrollment {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input student information
+        System.out.print("Enter Student Name: ");
+        String studentName = scanner.nextLine();
+
+        System.out.print("Enter Course: ");
+        String course = scanner.nextLine();
+
+        System.out.print("Enter Course Code: ");
+        String courseCode = scanner.nextLine();
+
+        System.out.print("Enter Number of Units (Max 10): ");
+        int numberOfUnits = scanner.nextInt();
+
+        // Validate number of units
+        if (numberOfUnits < 1 || numberOfUnits > 10) {
+            System.out.println("Invalid number of units. Please enter a value between 1 and 10.");
+            return;
+        }
+
+        // Compute enrollment fee
+        int feePerUnit = 1000;
+        int totalFee = numberOfUnits * feePerUnit;
+
+        // Output student information and total fee
+        System.out.println("\nStudent Name: " + studentName);
+        System.out.println("Total Enrollment Fee: " + totalFee);
+
+        // Payment processing
+        System.out.print("Enter Payment Amount: ");
+        int paymentAmount = scanner.nextInt();
+
+        // Check payment status
+        if (paymentAmount == totalFee) {
+            System.out.println("Payment Status: Fully Paid");
+        } else if (paymentAmount < totalFee) {
+            System.out.println("Payment Status: Partial Payment of " + paymentAmount);
+        } else {
+            System.out.println("Payment Status: Overpayment of " + (paymentAmount - totalFee));
+        }
+
+        scanner.close();
+    }
+}
