@@ -1,0 +1,88 @@
+// Base Class: Person
+class Person {
+    protected String name;
+    protected int age;
+    
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+// Subclass: Student infos
+class Student extends Person {
+    private String studentID, course;
+    private int units;
+    private final int feePerUnit = 1000;
+    
+    public Student(String name, int age, String studentID, String course, int units) {
+        super(name, age);
+        this.studentID = studentID;
+        this.course = course;
+        this.units = units;
+    }
+    
+    public double calculateFees() {
+        return units * feePerUnit;
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Student ID: " + studentID);
+        System.out.println("Course: " + course);
+        System.out.println("Units: " + units);
+        System.out.println("Total Fees: $" + calculateFees());
+    }
+}
+
+// Subclass: Instructor infos
+class Instructor extends Person {
+    private String employeeID, department;
+    private double salary;
+    
+    public Instructor(String name, int age, String employeeID, String department, double salary) {
+        super(name, age);
+        this.employeeID = employeeID;
+        this.department = department;
+        this.salary = salary;
+    }
+    
+    @Override
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Employee ID: " + employeeID);
+        System.out.println("Department: " + department);
+        System.out.println("Salary: $" + salary);
+    }
+}
+
+       // Test program
+       public class UniversityEnrollmentSystem {
+    
+       public static void printDetails(Person p) {
+        p.displayInfo();
+    }
+    
+       public static void main(String[] args) {
+        Student student1 = new Student("Regine", 20, "23100", " Computer Science", 18);
+        Student student2 = new Student("Kyle Janrex", 25, "23101", "Computer Engineering", 23);
+        Instructor instructor1 = new Instructor("Sir. Tonyo", 35, "110623", "Engineering", 45000);
+        Instructor instructor2 = new Instructor("Sir. Carmelo", 45, "110624", "Engineering", 50000);
+  
+        //   Print System   
+        System.out.println("Student 1 Details:");
+        printDetails(student1);        
+        System.out.println("\nStudent 2 Details:");
+        printDetails(student2);       
+        System.out.println("\nInstructor 1 Details:");
+        printDetails(instructor1);              
+        System.out.println("\nInstructor 2 Details:");
+        printDetails(instructor2);
+    }
+}
